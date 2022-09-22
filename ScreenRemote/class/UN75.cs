@@ -1,5 +1,3 @@
-using System;
-
 namespace ScreenRemote
 {
     public class UN75 : TU7000

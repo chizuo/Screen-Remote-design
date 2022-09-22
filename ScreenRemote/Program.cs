@@ -14,31 +14,30 @@
                 {"UN58",887276400051},
                 {"UN55",887276400044},
                 {"UN50",887276402147},
-                {"UN43",887276400037}
+                {"UN43",887276400037},
+                {"DEMO",000000000000}
             };
 
             var remoteCommands = new HashSet<string>() {
                 "power","source","ch+","ch-","vol+","vol-",
                 "mute","menu","info","last","settings",
-                "remote","help","q"
+                "remote","help","q","run demo"
                 };
 
             string command;
 
             var ScreenRemotes = new Dictionary<Remote, TU7000>();
 
-            //string key = ModelInput(TU7000);
-            string key = "UN75";
+            string key = ModelInput(TUbrochure);
             TU7000 screen = ModelScreen(key, TUbrochure);
             Remote remote = new Remote(Pairing(screen, key));
 
-            ViewRemote();
             ViewManual();
 
             do
             {
+                ViewRemote();
                 command = RemoteCommand(remoteCommands);
-                //command = "power";
                 if (command == "q") continue;
                 else if (command == "help") ViewManual();
                 else if (command == "remote") ViewRemote();
@@ -63,30 +62,43 @@
         static public void ViewManual()
         {
             Console.WriteLine("\n--- Instructions for Remote ---");
-            Console.WriteLine("Instructions: enter 'Power' to execute that button or 'Source' to execute that button");
-            Console.WriteLine("Channel can be entered within range of 1-999 inclusive");
-            Console.WriteLine("Increasing volume is 'vol+' & decreasing volume is 'vol-'");
-            Console.WriteLine("Increase channel by 1 is 'ch+' & decrease channel by 1 is 'ch-'");
-            Console.WriteLine("Entering 'mute', to set volume back to its pre-mute state, enter 'Mute' again");
-            Console.WriteLine("Entering 'last' will change the channel to its last channel state prior to the current channel");
-            Console.WriteLine("Entering 'menu' will launch the screen menu that is specific to your model");
-            Console.WriteLine("--- Instructions to operate this program ---");
+            Console.WriteLine("Enter...");
+            Console.WriteLine("...'power' to execute that button");
+            Console.WriteLine("...'source' to execute that button");
+            Console.WriteLine("... a number within 1-999 inclusive to switch to that channel");
+            Console.WriteLine("...'vol+' to increase volume by 1 & 'vol-' to decrease volume by 1");
+            Console.WriteLine("...'ch+' to increase channel by 1 & 'ch-' to decrease channel by 1");
+            Console.WriteLine("...'mute' to mute the volume & unmute if the volume is already muted");
+            Console.WriteLine("...'last' will change the channel to its last channel state prior to the current channel");
+            Console.WriteLine("...'menu' will launch the screen menu that is specific to your model");
+            Console.WriteLine("\n--- Instructions to operate this program ---");
             Console.WriteLine("Entering 'remote' will display the remote");
             Console.WriteLine("Entering 'help' will show this operational manual");
             Console.WriteLine("Entering 'q' will quit this program\n");
+            Console.Write("....Press the enter button to continue");
+            Console.ReadLine();
         }
 
         static public SignalHandler Pairing(TU7000 screen, string model)
-        {
+        { /* Subscribers: instantiated TU7000 models & its functional features implemented by its methods
+             Broadcaster: delegate (signal) for the instantiated remote */
             SignalHandler signal = screen.Power;
             signal += screen.Source;
             signal += screen.Mute;
             signal += screen.Volume;
             signal += screen.Channel;
+            signal += screen.Last;
+            signal += screen.Info;
+
+            if (model.Equals("DEMO"))
+            { /* Subscribers unique to Demo Model */
+                Demo demo = (Demo)screen;
+                signal += demo.RunDemo;
+            }
 
             if (model.Equals("UN75"))
-            {
-                screen = (UN75)screen;
+            { /* Subscribers unique to UN75 Model */
+                UN75 un75 = (UN75)screen;
             }
             return signal;
         }
@@ -100,7 +112,7 @@
             if (key.Equals("UN55")) { Console.WriteLine("UN55"); }
             if (key.Equals("UN50")) { Console.WriteLine("UN50"); }
             if (key.Equals("UN43")) { Console.WriteLine("UN43"); }
-            return new TU7000(0000000000, "Demo");
+            return new Demo(0000000000, "Demo");
         }
 
         static public string ModelInput(Dictionary<string, long> TU7000)

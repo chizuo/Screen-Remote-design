@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ScreenRemote
+﻿namespace ScreenRemote
 {
     public class Remote
     {

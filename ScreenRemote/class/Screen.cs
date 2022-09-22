@@ -1,9 +1,9 @@
-﻿using System;
-
-namespace ScreenRemote
+﻿namespace ScreenRemote
 {
-    public class TU7000 : TM124A
-    {
+    public abstract class TU7000 : TM124A
+    { /* Abstract class TU7000 (the series of screen) implements interface TM124A (remote model). 
+         The abstract methods represent the unique features for each model of TU7000 (inheritance).
+         This approach leverages the Factory Design Pattern in case Samsung wishes to expand the model line.*/
         protected bool power;
         protected bool mute;
         protected int channel;
@@ -42,18 +42,17 @@ namespace ScreenRemote
 
         public void Source(string command)
         {
-            if (command.Equals("source"))
+            if (command.Equals("source") && this.power == true)
             {
                 var sourceState = this.source.Dequeue();
                 this.DisplayScreen("Source: " + sourceState.ToString() + " --> " + source.Peek());
                 this.source.Enqueue(sourceState);
             }
-
         }
 
         public void Mute(string command)
         {
-            if (command.Equals("mute"))
+            if (command.Equals("mute") && this.power == true)
             {
                 this.mute = !this.mute ? true : false;
                 string info = this.mute ? "Volume: MUTE" : "Volume: " + this.volume.ToString();
@@ -65,7 +64,7 @@ namespace ScreenRemote
         {
             bool volumeUP = command.Equals("vol+");
             bool volumeDOWN = command.Equals("vol-");
-            if (volumeUP || volumeDOWN)
+            if ((volumeUP || volumeDOWN) && this.power == true)
             {
                 if (volumeUP)
                     this.volume = this.volume < this.maxVolume ? ++this.volume : this.volume;
@@ -80,67 +79,70 @@ namespace ScreenRemote
 
         public void Channel(string command)
         {
-            if (int.TryParse(command, out int num))
+            if (this.power == true)
             {
-                if (num <= this.maxChannel && num >= this.minChannel)
+                if (int.TryParse(command, out int num))
                 {
-                    this.lastChannel = this.channel;
-                    this.channel = num;
-                    this.DisplayScreen("Channel: " + command);
+                    if (num <= this.maxChannel && num >= this.minChannel)
+                    {
+                        this.lastChannel = this.channel;
+                        this.channel = num;
+                        this.DisplayScreen("Channel: " + command);
+                    }
+                    else { this.DisplayScreen("Error: Beyond Channel Range of Model"); }
                 }
-                else { this.DisplayScreen("Error: Beyond Channel Range of Model"); }
-            }
-            else if (command.Equals("ch+"))
-            {
-                if (this.channel < this.maxChannel)
+                else if (command.Equals("ch+"))
                 {
-                    this.lastChannel = this.channel;
-                    this.channel++;
-                    this.DisplayScreen("Channel: " + this.channel.ToString());
+                    if (this.channel < this.maxChannel)
+                    {
+                        this.lastChannel = this.channel;
+                        this.channel++;
+                        this.DisplayScreen("Channel: " + this.channel.ToString());
+                    }
+                    else { this.DisplayScreen("Channel: " + this.maxChannel.ToString() + " is the max range"); }
                 }
-                else { this.DisplayScreen("Channel: " + this.maxChannel.ToString() + " is the max range"); }
-            }
-            else if (command.Equals("ch-"))
-            {
-                if (this.channel > this.minChannel)
+                else if (command.Equals("ch-"))
                 {
-                    this.lastChannel = this.channel;
-                    this.channel--;
-                    this.DisplayScreen("Channel: " + this.channel.ToString());
+                    if (this.channel > this.minChannel)
+                    {
+                        this.lastChannel = this.channel;
+                        this.channel--;
+                        this.DisplayScreen("Channel: " + this.channel.ToString());
+                    }
+                    else { this.DisplayScreen("Channel: " + this.minChannel.ToString() + " is the minumum range"); }
                 }
-                else { this.DisplayScreen("Channel: " + this.minChannel.ToString() + " is the minumum range"); }
             }
+
         }
 
-        public virtual void Menu(string command)
+        public void Last(string command)
         {
-            if (command.Equals("Menu"))
+            if (command.Equals("last") && this.power == true)
             {
-                Console.WriteLine("Demo Menu for {0}", this.upcNumber);
-            }
-        }
-
-        public virtual void Settings(string command)
-        {
-            if (command.Equals("settings"))
-            {
-                Console.WriteLine("Demo Settings for {0}", this.upcNumber);
+                int temp = this.channel;
+                this.channel = this.lastChannel;
+                this.lastChannel = temp;
+                this.DisplayScreen("Channel: " + this.channel.ToString());
             }
         }
 
         public void Info(string command)
         {
             if (command.Equals("info"))
-            {
+            { /* Used to validate correctness of the state of the screen relative to remote commands pressed */
                 Console.WriteLine("\n****** State of {0} ******", this.model);
                 Console.WriteLine("UPC# {0} | Serial# {1}", this.upcNumber, this.serialNumber);
                 Console.WriteLine(this.power ? "Power: On" : "Power: Off");
                 Console.WriteLine("Source: {0}", this.source.Peek());
                 Console.WriteLine("Channel: {0}", this.channel);
                 Console.WriteLine("Volume: {0}", this.volume);
+                Console.WriteLine("Mute: {0}", this.mute);
+                Console.WriteLine("Previous Channel: {0}", this.lastChannel);
+                Console.WriteLine("****************************\n");
+                Console.WriteLine("Press enter to exit the info screen...");
+                Console.ReadLine();
             }
         }
-
 
         public void DisplayScreen(string info)
         {
@@ -164,6 +166,10 @@ namespace ScreenRemote
             Console.WriteLine("`---'`-----------------------------------------------'`---'");
             Console.WriteLine("        _||_                                   _||_");
         }
+
+        public abstract void Menu(string command);
+
+        public abstract void Settings(string command);
     }
 
 }
