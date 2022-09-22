@@ -112,7 +112,7 @@
                     else { this.DisplayScreen("Channel: " + this.minChannel.ToString() + " is the minumum range"); }
                 }
             }
-
+            else { if (!command.Equals("power")) this.DisplayScreen("Power: Off, turn on the TV."); }
         }
 
         public void Last(string command)
