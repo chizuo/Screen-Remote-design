@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jonch\\Source\\Repos\\chizuo\\COMP586-P1\\Screen Remote\\Screen Remote.csproj": {}
+    "/home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/Screen Remote.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jonch\\Source\\Repos\\chizuo\\COMP586-P1\\Screen Remote\\Screen Remote.csproj": {
+    "/home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/Screen Remote.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jonch\\Source\\Repos\\chizuo\\COMP586-P1\\Screen Remote\\Screen Remote.csproj",
+        "projectUniqueName": "/home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/Screen Remote.csproj",
         "projectName": "Screen Remote",
-        "projectPath": "C:\\Users\\jonch\\Source\\Repos\\chizuo\\COMP586-P1\\Screen Remote\\Screen Remote.csproj",
-        "packagesPath": "C:\\Users\\jonch\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jonch\\Source\\Repos\\chizuo\\COMP586-P1\\Screen Remote\\obj\\",
+        "projectPath": "/home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/Screen Remote.csproj",
+        "packagesPath": "/home/jonathan/.nuget/packages/",
+        "outputPath": "/home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jonch\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/jonathan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,8 +43,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -55,7 +52,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/dotnet6-6.0.109/sdk/6.0.109/RuntimeIdentifierGraph.json"
         }
       }
     }

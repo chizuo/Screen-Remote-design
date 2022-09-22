@@ -1,11 +1,19 @@
 ﻿using System;
 
-namespace Screen_Remote
+namespace ScreenRemote
 {
     public class Remote
     {
-        public Remote()
+        private SignalHandler signal;
+
+        public Remote(SignalHandler screen)
         {
+            signal = screen;
+        }
+
+        public void Command(string command)
+        {
+            this.signal(command);
         }
     }
 }
