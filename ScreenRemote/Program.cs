@@ -36,6 +36,7 @@
 
             do
             {
+                Thread.Sleep(2000);
                 ViewRemote();
                 command = RemoteCommand(remoteCommands);
                 if (command == "q") continue;
@@ -94,6 +95,8 @@
             { /* Subscribers unique to Demo Model */
                 Demo demo = (Demo)screen;
                 signal += demo.RunDemo;
+                signal += demo.Menu;
+                signal += demo.Settings;
             }
 
             if (model.Equals("UN75"))

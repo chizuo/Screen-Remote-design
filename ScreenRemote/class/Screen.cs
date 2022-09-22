@@ -2,8 +2,8 @@
 {
     public abstract class TU7000 : TM124A
     { /* Abstract class TU7000 (the series of screen) implements interface TM124A (remote model). 
-         The abstract methods represent the unique features for each model of TU7000 (inheritance).
-         This approach leverages the Factory Design Pattern in case Samsung wishes to expand the model line.*/
+         The abstract methods represent the unique features for each model of TU7000 (inheritance/polymorphism).
+         This approach leverages the Factory Design Pattern in the case Samsung wishes to expand the model line.*/
         protected bool power;
         protected bool mute;
         protected int channel;
@@ -147,7 +147,7 @@
         public void DisplayScreen(string info)
         {
             Console.Clear();
-            Console.WriteLine(".---..-----------------------------------------------..---.");
+            Console.WriteLine("\n.---..-----------------------------------------------..---.");
             Console.WriteLine("|   ||.---------------------------------------------.||   |");
             Console.WriteLine("| o |||                                             ||| o |");
             Console.WriteLine("| _ |||                                             ||| _ |");

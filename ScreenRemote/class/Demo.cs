@@ -17,7 +17,7 @@ namespace ScreenRemote
 
         public override void Menu(string command)
         {
-            if (command.Equals("Menu"))
+            if (command.Equals("menu"))
             {
                 this.DisplayScreen("Menu: disabled for demo models");
             }
@@ -25,7 +25,7 @@ namespace ScreenRemote
 
         public override void Settings(string command)
         {
-            if (command.Equals("Settings"))
+            if (command.Equals("settings"))
             {
                 this.DisplayScreen("Settings: disabled for demo models");
             }
@@ -36,38 +36,58 @@ namespace ScreenRemote
             if (command.Equals("run demo"))
             {
                 this.Power("power");
+                Console.WriteLine("Pressed [power]");
                 Thread.Sleep(1500);
                 this.Channel("586");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [5][8][6]");
+                Thread.Sleep(1500);
                 this.Channel("ch+");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [ch+]");
+                Thread.Sleep(1500);
                 this.Channel("ch-");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [ch-]");
+                Thread.Sleep(1500);
                 this.Volume("vol+");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [vol+]");
+                Thread.Sleep(1500);
                 this.Mute("mute");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [mute]");
+                Thread.Sleep(1500);
                 this.Mute("mute");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [mute]");
+                Thread.Sleep(1500);
                 this.Mute("mute");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [mute]");
+                Thread.Sleep(1500);
                 this.Volume("vol-");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [vol-]");
+                Thread.Sleep(1500);
                 this.Power("power");
-                Thread.Sleep(2000);
+                Console.WriteLine("Pressed [power]");
+                Thread.Sleep(1500);
                 this.Power("power");
-                Thread.Sleep(2000);
-                this.Source("source");
+                Console.WriteLine("Pressed [power]");
                 Thread.Sleep(1500);
                 this.Source("source");
+                Console.WriteLine("Pressed [source]");
                 Thread.Sleep(1500);
                 this.Source("source");
+                Console.WriteLine("Pressed [source]");
                 Thread.Sleep(1500);
                 this.Source("source");
+                Console.WriteLine("Pressed [source]");
                 Thread.Sleep(1500);
                 this.Source("source");
+                Console.WriteLine("Pressed [source]");
                 Thread.Sleep(1500);
                 this.Source("source");
+                Console.WriteLine("Pressed [source]");
+                Thread.Sleep(1500);
+                this.Power("power");
+                Console.WriteLine("Pressed [power]");
+                Thread.Sleep(1500);
+                this.Source("source");
+                Console.WriteLine("Pressed [source] ... source state shouldn't change since screen is off.");
                 Thread.Sleep(1500);
                 this.Info("info");
             }
