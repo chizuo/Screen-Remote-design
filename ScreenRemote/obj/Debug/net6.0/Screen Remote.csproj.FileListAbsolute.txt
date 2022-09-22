@@ -28,3 +28,18 @@
 /home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/obj/Debug/net6.0/ref/Screen Remote.dll
 /home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/obj/Debug/net6.0/Screen Remote.pdb
 /home/jonathan/Documents/academics/F22/COMP586/project/1/Screen Remote/obj/Debug/net6.0/Screen Remote.genruntimeconfig.cache
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/bin/Debug/net6.0/Screen Remote
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/bin/Debug/net6.0/Screen Remote.deps.json
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/bin/Debug/net6.0/Screen Remote.runtimeconfig.json
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/bin/Debug/net6.0/Screen Remote.dll
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/bin/Debug/net6.0/ref/Screen Remote.dll
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/bin/Debug/net6.0/Screen Remote.pdb
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.csproj.AssemblyReference.cache
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.GeneratedMSBuildEditorConfig.editorconfig
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.AssemblyInfoInputs.cache
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.AssemblyInfo.cs
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.csproj.CoreCompileInputs.cache
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.dll
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/ref/Screen Remote.dll
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.pdb
+/home/jonathan/Documents/academics/F22/COMP586/project/1/ScreenRemote/obj/Debug/net6.0/Screen Remote.genruntimeconfig.cache
