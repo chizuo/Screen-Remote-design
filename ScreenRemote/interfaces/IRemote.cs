@@ -7,6 +7,7 @@ namespace ScreenRemote
         void Source(string command);
         void Volume(string command);
         void Channel(string command);
+        void Last(string command);
         void Info(string command);
     }
 }
