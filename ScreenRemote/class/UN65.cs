@@ -75,7 +75,7 @@ namespace ScreenRemote
 
         public void DisplaySettings()
         {
-            string bar = "\n***** Sound Settings for UN75 *****";
+            string bar = "\n***** Sound Settings for UN65 *****";
             string bottom = "***********************************";
             Console.WriteLine(bar);
             Console.Write("* [{0}] DTS", this.dts ? "*" : "_");
