@@ -138,9 +138,6 @@
                 Console.WriteLine("Volume: {0}", this.volume);
                 Console.WriteLine("Mute: {0}", this.mute);
                 Console.WriteLine("Previous Channel: {0}", this.lastChannel);
-                Console.WriteLine("****************************\n");
-                Console.WriteLine("Press enter to exit the info screen...");
-                Console.ReadLine();
             }
         }
 
@@ -170,5 +167,7 @@
         public abstract void Menu(string command);
 
         public abstract void Settings(string command);
+
+        public abstract void ModelInfo(string command);
     }
 }
