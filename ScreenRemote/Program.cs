@@ -91,22 +91,41 @@
             signal += screen.Last;
             signal += screen.Info;
 
-            if (model.Equals("DEMO"))
-            { /* Subscribers unique to Demo Model */
-                Demo demo = (Demo)screen;
-                signal += demo.RunDemo;
-                signal += demo.Menu;
-                signal += demo.Settings;
-                signal += demo.ModelInfo;
+            switch (model)
+            {
+                case "DEMO": /* Subscribers unique to Demo Model */
+                    Demo demo = (Demo)screen;
+                    signal += demo.RunDemo;
+                    signal += demo.Menu;
+                    signal += demo.Settings;
+                    signal += demo.ModelInfo;
+                    break;
+                case "UN75": /* Subscribers unique to UN75 Model */
+                    UN75 un75 = (UN75)screen;
+                    signal += un75.Menu;
+                    signal += un75.Settings;
+                    signal += un75.ModelInfo;
+                    break;
+                case "UN70": /* Subscribers unique to UN70 Model */
+                    UN70 un70 = (UN70)screen;
+                    signal += un70.Menu;
+                    signal += un70.Settings;
+                    signal += un70.ModelInfo;
+                    break;
+                case "UN65": /* Subscribers unique to UN65 Model */
+                    UN65 un65 = (UN65)screen;
+                    signal += un65.Menu;
+                    signal += un65.Settings;
+                    signal += un65.ModelInfo;
+                    break;
+                case "UN58": /* Subscribers unique to UN58 Model */
+                    UN58 un58 = (UN58)screen;
+                    signal += un58.Menu;
+                    signal += un58.Settings;
+                    signal += un58.ModelInfo;
+                    break;
             }
 
-            if (model.Equals("UN75"))
-            { /* Subscribers unique to UN75 Model */
-                UN75 un75 = (UN75)screen;
-                signal += un75.Menu;
-                signal += un75.Settings;
-                signal += un75.ModelInfo;
-            }
             return signal;
         }
 
