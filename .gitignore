@@ -1,5 +1,3 @@
-/ScreenRemote/bin
-/ScreenRemote/.vscode
-/.vs
-/.vscode
-
+*bin
+*.vs
+*.vscode
