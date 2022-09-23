@@ -22,7 +22,7 @@
                 "power","source","ch+","ch-","vol+","vol-",
                 "mute","menu","info","last","settings",
                 "remote","help","q","run demo"
-                };
+            };
 
             string command;
 
