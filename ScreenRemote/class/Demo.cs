@@ -19,7 +19,7 @@ namespace ScreenRemote
         {
             if (command.Equals("menu"))
             {
-                this.DisplayScreen("Menu: disabled for demo models");
+                this.DisplayScreen("Smart Menu: disabled for demo models");
             }
         }
 
@@ -28,6 +28,17 @@ namespace ScreenRemote
             if (command.Equals("settings"))
             {
                 this.DisplayScreen("Settings: disabled for demo models");
+            }
+        }
+
+        public override void ModelInfo(string command)
+        {
+            if (command.Equals("info"))
+            {
+                Console.WriteLine("DEMO: no additional info");
+                Console.WriteLine("****************************\n");
+                Console.WriteLine("Press enter to exit the info screen...");
+                Console.ReadLine();
             }
         }
 

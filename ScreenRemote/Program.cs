@@ -97,11 +97,15 @@
                 signal += demo.RunDemo;
                 signal += demo.Menu;
                 signal += demo.Settings;
+                signal += demo.ModelInfo;
             }
 
             if (model.Equals("UN75"))
             { /* Subscribers unique to UN75 Model */
                 UN75 un75 = (UN75)screen;
+                signal += un75.Menu;
+                signal += un75.Settings;
+                signal += un75.ModelInfo;
             }
             return signal;
         }
