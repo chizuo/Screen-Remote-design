@@ -71,7 +71,6 @@ namespace ScreenRemote
                                 this.stereo = true;
                                 break;
                         }
-
                         valid = true;
                     }
                 } while (!valid);
