@@ -130,8 +130,16 @@
                     signal += un55.ModelInfo;
                     break;
                 case "UN50": /* Subscribers unique to UN50 Model */
+                    UN50 un50 = (UN50)screen;
+                    signal += un50.Menu;
+                    signal += un50.Settings;
+                    signal += un50.ModelInfo;
                     break;
                 case "UN43": /* Subscribers unique to UN43 Model */
+                    UN43 un43 = (UN43)screen;
+                    signal += un43.Menu;
+                    signal += un43.Settings;
+                    signal += un43.ModelInfo;
                     break;
             }
 
