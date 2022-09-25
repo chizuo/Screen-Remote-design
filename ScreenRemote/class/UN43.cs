@@ -1,11 +1,12 @@
 namespace ScreenRemote
 {
-    public class UN50 : TU7000
+    public class UN43 : TU7000
     {
-        protected bool dolby = false;
         protected bool stereo = true;
-        protected string tizen = "Tizen v50.1.1";
-        public UN50(long upc, string name) : base(upc, name) { }
+        protected bool mono = false;
+        protected string tizen = "Tizen v43.1.1";
+        public UN43(long upc, string name) : base(upc, name) { }
+
         public override void Menu(string command)
         {
             if (command.Equals("menu") && this.power == true)
@@ -20,9 +21,9 @@ namespace ScreenRemote
                 this.DisplaySettings();
                 do
                 {
-                    Console.Write("\nSet Audio to [1]Dolby [2]Stereo : ");
+                    Console.Write("\nSet Audio to [1]Stereo [2]Mono : ");
                     Int32.TryParse(Console.ReadLine(), out int sound);
-                    if (sound < 1 || sound > 2)
+                    if (sound < 1 || sound > 3)
                     {
                         valid = false;
                         Console.WriteLine("invalid selection");
@@ -32,12 +33,12 @@ namespace ScreenRemote
                         switch (sound)
                         {
                             case 1:
-                                this.dolby = true;
-                                this.stereo = false;
+                                this.mono = false;
+                                this.stereo = true;
                                 break;
                             default:
-                                this.dolby = false;
-                                this.stereo = true;
+                                this.mono = true;
+                                this.stereo = false;
                                 break;
                         }
                         valid = true;
@@ -53,8 +54,8 @@ namespace ScreenRemote
             {
                 string sound;
 
-                if (dolby) sound = "Dolby Digital";
-                else sound = "Stereo";
+                if (stereo) sound = "Stereo";
+                else sound = "Mono";
                 Console.WriteLine("Sound: {0}", sound);
                 Console.WriteLine("****************************\n");
                 Console.WriteLine("Press enter to exit the info screen...");
@@ -64,14 +65,14 @@ namespace ScreenRemote
 
         public void DisplaySettings()
         {
-            string bar = "\n***** Sound Settings for UN50 *****";
+            string bar = "\n***** Sound Settings for UN43 *****";
             string bottom = "***********************************";
             Console.WriteLine(bar);
-            Console.Write("* [{0}] Dolby", this.dolby ? "*" : "_");
-            Console.Write("".PadRight(bar.Length - 13));
-            Console.WriteLine("*");
             Console.Write("* [{0}] Stereo", this.stereo ? "*" : "_");
             Console.Write("".PadRight(bar.Length - 14));
+            Console.WriteLine("*");
+            Console.Write("* [{0}] Mono", this.mono ? "*" : "_");
+            Console.Write("".PadRight(bar.Length - 12));
             Console.WriteLine("*");
             Console.WriteLine(bottom);
         }
