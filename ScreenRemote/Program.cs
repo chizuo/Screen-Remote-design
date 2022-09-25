@@ -48,7 +48,7 @@
 
         static public void ViewRemote()
         {
-            Console.WriteLine("\n|------------------------------|");
+            Console.WriteLine("|------------------------------|");
             Console.WriteLine("|[  power ]          [ source ]|");
             Console.WriteLine("|[   1    ][    2   ][    3   ]|");
             Console.WriteLine("|[   4    ][    5   ][    6   ]|");
