@@ -82,7 +82,7 @@ namespace ScreenRemote
             Console.Write("".PadRight(bar.Length - 11));
             Console.WriteLine("*");
             Console.Write("* [{0}] THX", this.thx ? "*" : "_");
-            Console.Write("".PadRight(bar.Length - 13));
+            Console.Write("".PadRight(bar.Length - 11));
             Console.WriteLine("*");
             Console.Write("* [{0}] Stereo", this.stereo ? "*" : "_");
             Console.Write("".PadRight(bar.Length - 14));

@@ -30,7 +30,7 @@
 
             string key = ModelInput(TUbrochure);
             TU7000 screen = ModelScreen(key, TUbrochure);
-            Remote remote = new Remote(Pairing(screen, key));
+            Remote remote = new Remote(Publisher(screen, key));
 
             ViewManual();
 
@@ -48,7 +48,7 @@
 
         static public void ViewRemote()
         {
-            Console.WriteLine("\n|------------------------------|");
+            Console.WriteLine("|------------------------------|");
             Console.WriteLine("|[  power ]          [ source ]|");
             Console.WriteLine("|[   1    ][    2   ][    3   ]|");
             Console.WriteLine("|[   4    ][    5   ][    6   ]|");
@@ -57,7 +57,8 @@
             Console.WriteLine("|[    +   ][  mute  ][    +   ]|");
             Console.WriteLine("|[   vol  ][  last  ][   ch   ]|");
             Console.WriteLine("|[    -   ][settings][    -   ]|");
-            Console.WriteLine("|------------------------------|\n");
+            Console.WriteLine("|------------------------------|");
+            Console.WriteLine("|[  help  ]          [    q   ]|");
         }
 
         static public void ViewManual()
@@ -72,15 +73,13 @@
             Console.WriteLine("...'mute' to mute the volume & unmute if the volume is already muted");
             Console.WriteLine("...'last' will change the channel to its last channel state prior to the current channel");
             Console.WriteLine("...'menu' will launch the screen menu that is specific to your model");
-            Console.WriteLine("\n--- Instructions to operate this program ---");
-            Console.WriteLine("Entering 'remote' will display the remote");
-            Console.WriteLine("Entering 'help' will show this operational manual");
-            Console.WriteLine("Entering 'q' will quit this program\n");
+            Console.WriteLine("...'help' will show this operational manual");
+            Console.WriteLine("...'q' will quit this program\n");
             Console.Write("....Press the enter button to continue");
             Console.ReadLine();
         }
 
-        static public SignalHandler Pairing(TU7000 screen, string model)
+        static public SignalHandler Publisher(TU7000 screen, string model)
         { /* Subscribers: instantiated TU7000 models & its functional features implemented by its methods
              Broadcaster: delegate (signal) for the instantiated remote */
             SignalHandler signal = screen.Power;
@@ -124,6 +123,16 @@
                     signal += un58.Settings;
                     signal += un58.ModelInfo;
                     break;
+                case "UN55": /* Subscribers unique to UN55 Model */
+                    UN55 un55 = (UN55)screen;
+                    signal += un55.Menu;
+                    signal += un55.Settings;
+                    signal += un55.ModelInfo;
+                    break;
+                case "UN50": /* Subscribers unique to UN50 Model */
+                    break;
+                case "UN43": /* Subscribers unique to UN43 Model */
+                    break;
             }
 
             return signal;
@@ -131,14 +140,25 @@
 
         static public TU7000 ModelScreen(string key, Dictionary<string, long> TUbrochure)
         {
-            if (key.Equals("UN75")) { return new UN75(TUbrochure[key], key); }
-            if (key.Equals("UN70")) { Console.WriteLine("UN70"); }
-            if (key.Equals("UN65")) { Console.WriteLine("UN65"); }
-            if (key.Equals("UN58")) { Console.WriteLine("UN58"); }
-            if (key.Equals("UN55")) { Console.WriteLine("UN55"); }
-            if (key.Equals("UN50")) { Console.WriteLine("UN50"); }
-            if (key.Equals("UN43")) { Console.WriteLine("UN43"); }
-            return new Demo(0000000000, "Demo");
+            switch (key)
+            {
+                case "UN75":
+                    return new UN75(TUbrochure[key], key);
+                case "UN70":
+                    return new UN70(TUbrochure[key], key);
+                case "UN65":
+                    return new UN65(TUbrochure[key], key);
+                case "UN58":
+                    return new UN58(TUbrochure[key], key);
+                case "UN55":
+                    return new UN55(TUbrochure[key], key);
+                /*  case "UN50": 
+                          return new UN50(TUbrochure[key], key);
+                    case "UN43": 
+                          return new UN43(TUbrochure[key], key);*/
+                default:
+                    return new Demo(0000000000, "Demo");
+            }
         }
 
         static public string ModelInput(Dictionary<string, long> TU7000)
@@ -148,7 +168,7 @@
 
             do
             {
-                Console.WriteLine("TU7000 Models: [UN75][UN70][UN65][UN58[UN55][UN50][UN43]");
+                Console.WriteLine("TU7000 Models: [UN75],[UN70],[UN65],[UN58],[UN55],[UN50],[UN43]");
                 Console.Write("Provide the model of screen for the TU7000 series: ");
                 key = Console.ReadLine();
                 key = key == null ? "" : key;

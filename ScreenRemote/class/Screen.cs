@@ -9,7 +9,8 @@
         protected int channel;
         protected int volume;
         protected int lastChannel;
-        protected Queue<string> source = new Queue<string>(new[] { "antenna", "HDMI1", "HDMI2", "HDMI3", "HDMI4" });
+        protected string source;
+        protected Queue<string> sourceControl = new Queue<string>(new[] { "antenna", "HDMI1", "HDMI2", "HDMI3", "HDMI4" });
         protected long upcNumber;
         protected int serialNumber;
         protected string model;
@@ -23,6 +24,7 @@
             upcNumber = upc;
             serialNumber = new Random().Next(1000000, 9999999);
             model = name;
+            source = "antenna";
             /* default state of a new TU7000 series television */
             power = false;
             mute = false;
@@ -44,9 +46,10 @@
         {
             if (command.Equals("source") && this.power == true)
             {
-                var sourceState = this.source.Dequeue();
-                this.DisplayScreen("Source: " + sourceState.ToString() + " --> " + source.Peek());
-                this.source.Enqueue(sourceState);
+                var prevState = this.sourceControl.Dequeue();
+                this.DisplayScreen("Source: " + this.source + " --> " + this.sourceControl.Peek());
+                this.sourceControl.Enqueue(prevState);
+                this.source = this.sourceControl.Peek();
             }
         }
 
@@ -87,6 +90,7 @@
                     {
                         this.lastChannel = this.channel;
                         this.channel = num;
+                        this.source = "antenna";
                         this.DisplayScreen("Channel: " + command);
                     }
                     else { this.DisplayScreen("Error: Beyond Channel Range of Model"); }
@@ -97,6 +101,7 @@
                     {
                         this.lastChannel = this.channel;
                         this.channel++;
+                        this.source = "antenna";
                         this.DisplayScreen("Channel: " + this.channel.ToString());
                     }
                     else { this.DisplayScreen("Channel: " + this.maxChannel.ToString() + " is the max range"); }
@@ -107,6 +112,7 @@
                     {
                         this.lastChannel = this.channel;
                         this.channel--;
+                        this.source = "antenna";
                         this.DisplayScreen("Channel: " + this.channel.ToString());
                     }
                     else { this.DisplayScreen("Channel: " + this.minChannel.ToString() + " is the minumum range"); }
@@ -133,7 +139,7 @@
                 Console.WriteLine("\n****** State of {0} ******", this.model);
                 Console.WriteLine("UPC# {0} | Serial# {1}", this.upcNumber, this.serialNumber);
                 Console.WriteLine(this.power ? "Power: On" : "Power: Off");
-                Console.WriteLine("Source: {0}", this.source.Peek());
+                Console.WriteLine("Source: {0}", this.source);
                 Console.WriteLine("Channel: {0}", this.channel);
                 Console.WriteLine("Volume: {0}", this.volume);
                 Console.WriteLine("Mute: {0}", this.mute);
@@ -161,7 +167,7 @@
             Console.WriteLine("| O |||                                             ||| O |");
             Console.WriteLine("|`-'||`---------------------------------------------'||`-'|");
             Console.WriteLine("`---'`-----------------------------------------------'`---'");
-            Console.WriteLine("        _||_                                   _||_");
+            Console.WriteLine("        _||_                                   _||_\n");
         }
 
         public abstract void Menu(string command);
