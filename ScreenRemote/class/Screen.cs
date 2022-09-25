@@ -14,10 +14,10 @@
         protected long upcNumber;
         protected int serialNumber;
         protected string model;
-        protected int maxChannel = 999;
-        protected int maxVolume = 100;
-        protected int minChannel = 1;
-        protected int minVolume = 0;
+        protected static int maxChannel;
+        protected static int maxVolume;
+        protected static int minChannel;
+        protected static int minVolume;
 
         public TU7000(long upc, string name)
         {
@@ -31,6 +31,14 @@
             channel = 3;
             volume = 50;
             lastChannel = channel;
+        }
+
+        static TU7000()
+        {
+            maxChannel = 999;
+            maxVolume = 100;
+            minChannel = 1;
+            minVolume = 0;
         }
 
         public void Power(string command)
@@ -70,10 +78,10 @@
             if ((volumeUP || volumeDOWN) && this.power == true)
             {
                 if (volumeUP)
-                    this.volume = this.volume < this.maxVolume ? ++this.volume : this.volume;
+                    this.volume = this.volume < maxVolume ? ++this.volume : this.volume;
 
                 if (volumeDOWN)
-                    this.volume = this.volume > this.minVolume ? --this.volume : this.volume;
+                    this.volume = this.volume > minVolume ? --this.volume : this.volume;
 
                 this.mute = false;
                 this.DisplayScreen("Volume: " + this.volume.ToString());
@@ -86,7 +94,7 @@
             {
                 if (int.TryParse(command, out int num))
                 {
-                    if (num <= this.maxChannel && num >= this.minChannel)
+                    if (num <= maxChannel && num >= minChannel)
                     {
                         this.lastChannel = this.channel;
                         this.channel = num;
@@ -97,25 +105,25 @@
                 }
                 else if (command.Equals("ch+"))
                 {
-                    if (this.channel < this.maxChannel)
+                    if (this.channel < maxChannel)
                     {
                         this.lastChannel = this.channel;
                         this.channel++;
                         this.source = "antenna";
                         this.DisplayScreen("Channel: " + this.channel.ToString());
                     }
-                    else { this.DisplayScreen("Channel: " + this.maxChannel.ToString() + " is the max range"); }
+                    else { this.DisplayScreen("Channel: " + maxChannel.ToString() + " is the max range"); }
                 }
                 else if (command.Equals("ch-"))
                 {
-                    if (this.channel > this.minChannel)
+                    if (this.channel > minChannel)
                     {
                         this.lastChannel = this.channel;
                         this.channel--;
                         this.source = "antenna";
                         this.DisplayScreen("Channel: " + this.channel.ToString());
                     }
-                    else { this.DisplayScreen("Channel: " + this.minChannel.ToString() + " is the minumum range"); }
+                    else { this.DisplayScreen("Channel: " + minChannel.ToString() + " is the minumum range"); }
                 }
             }
             else { if (!command.Equals("power")) this.DisplayScreen("Power: Off, turn on the TV."); }
