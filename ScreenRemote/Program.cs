@@ -152,10 +152,10 @@
                     return new UN58(TUbrochure[key], key);
                 case "UN55":
                     return new UN55(TUbrochure[key], key);
-                /*  case "UN50": 
-                          return new UN50(TUbrochure[key], key);
-                    case "UN43": 
-                          return new UN43(TUbrochure[key], key);*/
+                case "UN50":
+                    return new UN50(TUbrochure[key], key);
+                case "UN43":
+                    return new UN43(TUbrochure[key], key);
                 default:
                     return new Demo(0000000000, "Demo");
             }
