@@ -4,6 +4,7 @@ namespace ScreenRemote
     interface TM124A
     {
         void Power(string command);
+        void Mute(string command);
         void Source(string command);
         void Volume(string command);
         void Channel(string command);

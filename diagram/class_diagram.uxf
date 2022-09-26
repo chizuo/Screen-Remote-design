@@ -1,0 +1,121 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>528</x><y>0</y><w>168</w><h>152</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+**TM124A**
+--
+
+
+--
++Power(command: string): void
++Mute(command: string: void
++Source(command: string: void
++Volume(command: string: void
++Channel(command: string: void
++Last(command: string: void
++Info(command: string: void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>232</y><w>168</w><h>344</h></coordinates><panel_attributes>&lt;&lt; Abstract Class&gt;&gt;
+**TU7000**
+--
+#power: bool
+#mute: bool
+#channel: int
+#volume: int
+#lastChannel: int
+#source: string
+#upcNumber: long
+#serialNumber: int
+#model:string
+_#minChannel: int_
+_#minVolume: int_
+_#maxChannel: int_
+_#maxVolume: int_
+#sourceControl: Queue&lt;string&gt;
+--
++Power(command: string): void
++Mute(command: string): void
++Sourcer(command: string): void
++Volume(command: string): void
++Channel(command: string): void
++Last(command: string): void
++Info(command: string): void
++DisplayScreen(info: string): void
+/+Menu(command: string): void/
+/+Settings(command: string): void/
+/+ModelInfo(command: string): void/</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>608</x><y>144</y><w>24</w><h>104</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>72</x><y>568</y><w>552</w><h>128</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>670;10;670;90;10;90;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN75**
+--
+#tizen: string
+#dts: bool
+#dolby: bool
+#atmos: bool
+#thx: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>176</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN70**
+--
+#tizen: string
+#dts: bool
+#dolby: bool
+#atmos: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>248</x><y>632</y><w>24</w><h>64</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>352</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN65**
+--
+#tizen: string
+#dts: bool
+#dolby: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN58**
+--
+#tizen: string
+#dts: bool
+#thx: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>424</x><y>632</y><w>24</w><h>64</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>632</y><w>24</w><h>64</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>704</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN55**
+--
+#tizen: string
+#dolby: bool
+#thx: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>624</y><w>200</w><h>72</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;230;20;230;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>880</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN50**
+--
+#tizen: string
+#dolby: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>776</x><y>624</y><w>208</w><h>72</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;240;20;240;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1056</x><y>680</y><w>168</w><h>152</h></coordinates><panel_attributes>**UN43**
+--
+#tizen: string
+#mono: bool
+#stereo: bool
+--
++Menu(command: string): void
++Settings(command: string): void
++ModelInfo(command: string): void
++DisplaySettings(: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>624</y><w>200</w><h>72</h></coordinates><panel_attributes></panel_attributes><additional_attributes>10;20;230;20;230;70</additional_attributes></element></diagram>
