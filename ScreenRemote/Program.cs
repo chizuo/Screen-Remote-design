@@ -26,10 +26,8 @@
 
             string command;
 
-            var ScreenRemotes = new Dictionary<Remote, TU7000>();
-
             string key = ModelInput(TUbrochure);
-            TU7000 screen = ModelScreen(key, TUbrochure);
+            TU7000 screen = Factory(key, TUbrochure);
             Remote remote = new Remote(Publisher(screen, key));
 
             ViewManual();
@@ -146,7 +144,7 @@
             return signal;
         }
 
-        static public TU7000 ModelScreen(string key, Dictionary<string, long> TUbrochure)
+        static public TU7000 Factory(string key, Dictionary<string, long> TUbrochure)
         {
             switch (key)
             {
