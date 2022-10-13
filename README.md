@@ -15,7 +15,7 @@ This appliciation is a system design implementation of a screen & remote. Using 
   - `static RemoteCommand(HashSet validCommands)` : User prompt regarding which remote command to execute towards the TU7000 model screen.
 - `class Remote` in Remote.cs
   - `void Command(string command` : calls the delegate to broadcast the command to the remote's paired screen.
-- `abstract class TU7000` inherits `interface TM124A`
+- `abstract class TU7000` in Screen.cs inherits `interface TM124A` in IRemote.cs
   - `void DisplayScreen(string info)` : visualization of the screen responding to the User's remote commands.
   - `abstract void Menu(string command)` : should implement the Smart Menu of a particular TU7000 model.
   - `abstract void Settings(string command)` : should implement the T.V. Settings of a particular TU7000 model.
