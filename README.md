@@ -20,6 +20,13 @@ This appliciation is a system design implementation of a screen & remote. Using 
   - `abstract void Menu(string command)` : should implement the Smart Menu of a particular TU7000 model.
   - `abstract void Settings(string command)` : should implement the T.V. Settings of a particular TU7000 model.
   - `abstract void ModelInfo(string command)` : should implement the Model Information of a particular TU7000 model.
+- `class UN43` in UN43.cs inherits `TU7000` in Screen.cs
+- `class UN50` in UN50.cs inherits `TU7000` in Screen.cs
+- `class UN55` in UN55.cs inherits `TU7000` in Screen.cs
+- `class UN58` in UN58.cs inherits `TU7000` in Screen.cs
+- `class UN65` in UN65.cs inherits `TU7000` in Screen.cs
+- `class UN70` in UN70.cs inherits `TU7000` in Screen.cs
+- `class UN75` in UN75.cs inherits `TU7000` in Screen.cs
 <br><br>
 ## Interface
 - TM124A : interface that TU7000 screens must implement, as they are the common fundamental remote commands that all series model share.
