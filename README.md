@@ -1,4 +1,4 @@
-# COMP586 Objected Oriented Softwared Development
+# COMP586 Objected Oriented Software Development
 In fulfillment of project 1 during Fall 2022
 <br><br>
 ## Description
